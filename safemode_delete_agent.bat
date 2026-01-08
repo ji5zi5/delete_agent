@@ -2,19 +2,6 @@
 chcp 65001 >nul 2>&1
 title 안전 모드 부팅
 
-whoami /groups | find "S-1-16-12288" >nul 2>&1
-if %errorLevel% NEQ 0 (
-    whoami /groups | find "S-1-5-32-544" >nul 2>&1
-    if %errorLevel% NEQ 0 (
-        color 4F
-        echo.
-        echo [오류] 관리자 권한 필요
-        echo 파일을 우클릭 후 "관리자 권한으로 실행"을 선택하세요
-        pause
-        exit
-    )
-)
-
 cls
 color 1F
 echo ========================================================
@@ -35,6 +22,8 @@ if %errorLevel% == 0 (
     timeout /t 3 >nul
     shutdown /r /t 0
 ) else (
-    echo [실패] bcdedit 실행 실패 - 이미 안전 모드이거나 권한 부족
+    echo.
+    echo [실패] bcdedit 실행 실패
+    echo 관리자 권한으로 다시 실행하거나, 이미 안전 모드인지 확인하세요.
     pause
 )
