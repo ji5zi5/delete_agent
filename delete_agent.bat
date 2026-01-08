@@ -2,29 +2,15 @@
 chcp 65001 >nul 2>&1
 powershell -Command "[Console]::OutputEncoding = [System.Text.Encoding]::UTF8" >nul 2>&1
 setlocal EnableDelayedExpansion
-title 유해차단 에이전트 완전 삭제 (수동 관리자 모드)
+title 유해차단 에이전트 삭제기
 
-:: 1. 관리자 권한 확인
-net session >nul 2>&1
-if %errorLevel% == 0 (
-    goto :RunScript
-) else (
-    goto :NoAdmin
-)
+goto :RunScript
 
 :NoAdmin
     color 4F
     echo.
     echo =================================================================
-    echo [오류] 관리자 권한이 없습니다!
-    echo =================================================================
-    echo.
-    echo 이 스크립트는 '관리자 권한'이 필수입니다.
-    echo.
-    echo 1. 이 창을 닫으세요.
-    echo 2. 파일(advanced_delete_agent.bat)을 마우스 오른쪽 클릭하세요.
-    echo 3. '관리자 권한으로 실행(A)'을 선택하세요.
-    echo.
+    echo [오류] 권한 부족 - 관리자 권한으로 다시 실행하세요
     echo =================================================================
     echo.
     pause
