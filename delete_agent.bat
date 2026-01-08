@@ -2,7 +2,7 @@
 chcp 65001 >nul 2>&1
 powershell -Command "[Console]::OutputEncoding = [System.Text.Encoding]::UTF8" >nul 2>&1
 setlocal EnableDelayedExpansion
-title ?좏빐李⑤떒 ?먯씠?꾪듃 ??젣湲?- ISHS 32nd ?꾩???
+title 유해차단 에이전트 삭제기 - ISHS 32nd 엄지오
 
 goto :RunScript
 
@@ -10,7 +10,7 @@ goto :RunScript
     color 4F
     echo.
     echo =================================================================
-    echo [?ㅻ쪟] 沅뚰븳 遺議?- 愿由ъ옄 沅뚰븳?쇰줈 ?ㅼ떆 ?ㅽ뻾?섏꽭??
+    echo [오류] 권한 부족 - 관리자 권한으로 다시 실행하세요
     echo =================================================================
     echo.
     pause
@@ -19,7 +19,7 @@ goto :RunScript
 :RunScript
     cd /d "C:\Windows\SysWOW64"
     if %errorLevel% NEQ 0 (
-        echo [?ㅻ쪟] C:\Windows\SysWOW64 寃쎈줈濡??대룞?????놁뒿?덈떎.
+        echo [오류] C:\Windows\SysWOW64 접근 불가
         pause
         exit
     )
@@ -28,8 +28,8 @@ goto :RunScript
     set "CLEAN_TIMER=0"
 
     echo ========================================================
-    echo [愿由ъ옄 紐⑤뱶] ?좏빐李⑤떒 ?먯씠?꾪듃 ??젣瑜??쒖옉?⑸땲??
-    echo 寃쎄퀬: ??李쎌쓣 ?レ? 留덉꽭??
+    echo [관리자 모드] 유해차단 에이전트 삭제를 시작합니다.
+    echo 경고: 이 창을 닫지 마세요.
     echo ========================================================
     timeout /t 2 >nul
 
@@ -37,7 +37,6 @@ goto :RunScript
     set "REMAINING_COUNT=0"
     set "REMAINING_LIST="
 
-    :: --- List of Targets ---
     call :ProcessFile llrxdgfkm.exe
     call :ProcessFile lqndauccd.exe
     call :ProcessFile neagnhoaq.exe
@@ -53,47 +52,44 @@ goto :RunScript
     call :ProcessFile vfoxujww.exe
     call :ProcessFile ylirkidg.exe
     call :ProcessFile mprogramicon.ico
-    :: -----------------------
 
     cls
     echo ========================================================
-    echo  ?좏빐李⑤떒 ?먯씠?꾪듃 ?ㅼ떆媛???젣 紐⑤땲?곕쭅 [%time%]
+    echo  에이전트 삭제 모니터링 [%time%]
     echo ========================================================
     echo.
     
     if !REMAINING_COUNT! GTR 0 (
-        :: 媛먯???-> ??대㉧ 由ъ뀑
         set "CLEAN_TIMER=0"
         
         color 4F
-        echo [寃쎄퀬] ?꾩쭅 ?붿뿬 ?뚯씪??!REMAINING_COUNT!媛??⑥븯?듬땲??
+        echo [경고] 아직 잔여 파일이 !REMAINING_COUNT!개 남았습니다.
         echo --------------------------------------------------------
-        echo ?⑥? ?뚯씪: !REMAINING_LIST!
+        echo 남은 파일: !REMAINING_LIST!
         echo --------------------------------------------------------
         echo.
         if defined DELETED_HISTORY (
-            echo [?깃났?곸쑝濡???젣??
+            echo [성공적으로 삭제됨]
             echo !DELETED_HISTORY!
         )
         echo.
-        echo ??젣 ?ъ떆??以?.. (?먮룞 諛섎났)
+        echo 삭제 재시도 중... (자동 반복)
     ) else (
-        :: 源⑤걮??-> ??대㉧ 利앷?
         set /a CLEAN_TIMER+=1
         
         color 2F
-        echo [?묓샇] ?꾩옱 諛쒓껄???먯씠?꾪듃 ?뚯씪???놁뒿?덈떎.
+        echo [양호] 현재 발견된 에이전트 파일이 없습니다.
         echo.
         if defined DELETED_HISTORY (
-            echo [?깃났?곸쑝濡???젣??
+            echo [성공적으로 삭제됨]
             echo !DELETED_HISTORY!
         ) else (
-            echo [?뚮┝] 諛쒓껄???먯씠?꾪듃 ?뚯씪???놁뒿?덈떎. (?대? 源⑤걮??
+            echo [알림] 발견된 에이전트 파일이 없습니다. (이미 깨끗함)
         )
         echo.
         echo --------------------------------------------------------
-        echo  ?덉쟾 ?곹깭 ?좎? ?쒓컙: !CLEAN_TIMER! / 10
-        echo  (???곹깭媛 10珥덇컙 吏?띾릺硫??먮룞?쇰줈 ?꾨즺?⑸땲??
+        echo  안전 상태 유지 시간: !CLEAN_TIMER! / 10
+        echo  (이 상태가 10초간 지속되면 자동으로 완료됩니다)
         echo --------------------------------------------------------
         
         if !CLEAN_TIMER! GEQ 10 (
@@ -109,16 +105,16 @@ goto :RunScript
     cls
     color 2F
     echo ========================================================
-    echo              [??젣 ?꾨즺] 紐⑤뱺 ?묒뾽 ?깃났!
+    echo              [삭제 완료] 모든 작업 성공!
     echo ========================================================
     echo.
-    echo  10珥??숈븞 ?먯씠?꾪듃媛 ?ъ떎?됰릺吏 ?딆븯?듬땲??
-    echo  ?쒖뒪?쒖씠 ?덉쟾??寃껋쑝濡??먮떒?⑸땲??
+    echo  10초 동안 에이전트가 재실행되지 않았습니다.
+    echo  시스템이 안전한 것으로 판단됩니다.
     echo.
-    echo  ?댁젣 ??李쎌쓣 ?レ쑝?붾룄 ?⑸땲??
+    echo  이제 이 창을 닫으셔도 됩니다.
     echo.
     if defined DELETED_HISTORY (
-        echo  [理쒖쥌 ??젣???뚯씪 紐⑸줉]
+        echo  [최종 삭제된 파일 목록]
         echo  !DELETED_HISTORY!
     )
     echo.
