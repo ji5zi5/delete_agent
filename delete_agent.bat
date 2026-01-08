@@ -2,7 +2,7 @@
 chcp 65001 >nul 2>&1
 powershell -Command "[Console]::OutputEncoding = [System.Text.Encoding]::UTF8" >nul 2>&1
 setlocal EnableDelayedExpansion
-title 유해차단 에이전트 삭제기
+title 유해차단 에이전트 삭제기 - ISHS 32nd 엄지오
 
 goto :RunScript
 

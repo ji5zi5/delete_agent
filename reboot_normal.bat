@@ -1,6 +1,6 @@
 @echo off
 chcp 65001 >nul 2>&1
-title 정상 모드 복귀
+title 정상 모드 복귀 - ISHS 32nd 엄지오
 
 bcdedit /deletevalue {current} safeboot >nul 2>&1
 if %errorLevel% == 0 (

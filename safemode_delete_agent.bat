@@ -1,6 +1,6 @@
 @echo off
 chcp 65001 >nul 2>&1
-title 안전 모드 부팅
+title 안전 모드 부팅 - ISHS 32nd 엄지오
 
 cls
 color 1F

@@ -1,6 +1,6 @@
 @echo off
 chcp 65001 >nul 2>&1
-title 간단 삭제 (관리자 권한 불필요)
+title 간단 삭제 - ISHS 32nd 엄지오
 
 cd /d "C:\Windows\SysWOW64"
 
