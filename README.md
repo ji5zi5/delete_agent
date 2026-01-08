@@ -4,24 +4,24 @@
 
 ## 📁 파일 구성
 
-| 파일                        | 설명               |
-| --------------------------- | ------------------ |
-| `delete_agent.bat`          | 메인 삭제 스크립트 |
-| `safemode_delete_agent.bat` | 안전 모드로 부팅   |
-| `reboot_normal.bat`         | 정상 모드로 복귀   |
+| 파일                        | 설명                         |
+| --------------------------- | ---------------------------- |
+| `delete_agent.bat`          | 강력 삭제 (관리자 권한 권장) |
+| `simple_delete.bat`         | 간단 삭제 (안전 모드용)      |
+| `safemode_delete_agent.bat` | 안전 모드로 부팅             |
+| `reboot_normal.bat`         | 정상 모드로 복귀             |
 
 ## 🚀 사용 방법
 
-### 일반 삭제
+### 1. 강력 삭제 (먼저 시도)
 
-1. `delete_agent.bat` 우클릭 → **관리자 권한으로 실행**
-2. 🔴 빨간색: 삭제 시도 중 / 🟢 초록색: 완료
-3. 10초간 초록색 유지되면 자동 종료
+- `delete_agent.bat` 우클릭 → **관리자 권한으로 실행**
+- 🔴 빨간색: 삭제 시도 중 / 🟢 초록색: 완료
 
-### 안전 모드 삭제 (일반 삭제 실패 시)
+### 2. 안전 모드 삭제 (강력 삭제 실패 시)
 
-1. `safemode_delete_agent.bat` 관리자 권한으로 실행 → 안전 모드 부팅
-2. 안전 모드에서 `delete_agent.bat` 실행
+1. `safemode_delete_agent.bat` 실행 → 안전 모드 부팅
+2. 안전 모드에서 `simple_delete.bat` 또는 `delete_agent.bat` 실행
 3. `reboot_normal.bat` 실행 → 정상 모드 복귀
 
 ## 💡 작동 원리
@@ -33,7 +33,6 @@
 
 ## ⚠️ 주의사항
 
-- **관리자 권한** 필수
 - 삭제 대상: `C:\Windows\SysWOW64` 내 에이전트 파일들
 
 ---
