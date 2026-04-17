@@ -1,0 +1,6 @@
+{
+  "files.autoGuessEncoding": true,
+  "[bat]": {
+    "files.encoding": "euckr"
+  }
+}
